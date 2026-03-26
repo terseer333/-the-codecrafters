@@ -1,1 +1,80 @@
 
+/*
+CODECRAFTERS — HACKATHON CHALLENGE
+
+		   THE CLI CALCULATOR
+
+
+		Two phases. One calculator. Build it in stages.
+
+		Rules:
+		→ Write everything in Go. Standard library only.
+		→ Must compile and run without errors.
+		→ Push to your the-codecrafters repo in a folder
+		  named: thecodecrafterthon-day1/
+		→ Include a README.md explaining how to run it.
+		→ Complete Phase 1 before opening Phase 2.
+		→ Deadline: 2 hours from — GO.
+
+		 PHASE 1 — GET IT WORKING
+
+		Build a calculator that runs in the terminal,
+		accepts user input, and keeps going until
+		you decide to stop.
+
+		WHAT TO BUILD
+
+	  - OPERATIONS
+	    The user types an expression. The calculator
+	    responds with the result. Support:
+
+	    add <a> <b>   → addition
+	    sub <a> <b>   → subtraction
+	    mul <a> <b>   → multiplication
+	    div <a> <b>   → division
+
+	    Example interaction:
+	    > add 10 4
+	    ✦ Result: 14
+
+	    > mul 3 7
+	    ✦ Result: 21
+*/
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	for {
+		var thon1, thon2 int
+		var OPERATIONS string
+		fmt.Print("input 1: ")
+		fmt.Scanln(&thon1)
+		fmt.Print("input 2: ")
+		fmt.Scanln(&thon2)
+		fmt.Println("OPERATION\n", "<1> addition\n", "<2> substraction\n", "<3> multiplication\n", "<4> division")
+		fmt.Println("=> selection operation..")
+		fmt.Scanln(&OPERATIONS)
+		if OPERATIONS == "1" {
+			fmt.Println("Result: ", thon1+thon2)
+		}
+		if OPERATIONS == "2" {
+			fmt.Println("Result: ", thon1-thon2)
+		}
+		if OPERATIONS == "3" {
+			fmt.Println("Result: ", thon1*thon2)
+		}
+		if OPERATIONS == "4" {
+			if thon1%thon2 != 0 {
+				fmt.Println("Result:", "opps..", thon1, "is not divisible by", thon2)
+				fmt.Println("try again..")
+			} else {
+				fmt.Println("Result: ", thon1/thon2)
+			}
+		}
+
+	}
+
+}
