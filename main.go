@@ -2,42 +2,50 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func main() {
 	for {
-		var thon1 int
-		var thon2 int
-		fmt.Print("input 1: ")
-		fmt.Scanln(&thon1)
-		fmt.Print("input 2: ")
-		fmt.Scanln(&thon2)
-		var OPERATIONS string
-		fmt.Println("OPERATION\n", "<1> addition\n", "<2> substraction\n", "<3> multiplication\n", "<4> division")
-		fmt.Println("=> selection operation..")
-		fmt.Scanln(&OPERATIONS)
-		if OPERATIONS == "1" {
-			fmt.Println("Result: ", thon1+thon2)
-		}
-		if OPERATIONS == "2" {
-			fmt.Println("Result: ", thon1-thon2)
-		}
-		if OPERATIONS == "3" {
-			fmt.Println("Result: ", thon1*thon2)
-		}
-		if OPERATIONS == "4" {
-			if thon2 == 0 {
-				fmt.Println("error..", thon1, "not divisible by 0")
-			}
+		var num1 string
+		var num2 string
+		fmt.Print("Enter first num: ")
+		fmt.Scanln(&num1)
+		val1, err := strconv.Atoi(num1)
+
+		if err != nil {
+			fmt.Println("Error..need only digit")
 			continue
-
-			if thon1%thon2 != 0 {
-				fmt.Println("Result:", "opps..", thon1, "is not divisible by", thon2)
-				fmt.Println("try again..")
-			} else {
-				fmt.Println("Result: ", thon1/thon2)
-			}
 		}
 
+		var operation string
+		fmt.Println("> 1. Addition")
+		fmt.Println("> 2. Multiplication")
+		fmt.Println("> 3. Subtraction")
+		fmt.Println("> 4. Division")
+		fmt.Print("selection operation : ")
+		fmt.Scanln(&operation)
+
+		fmt.Print("Enter second num: ")
+		fmt.Scanln(&num2)
+		val2, err := strconv.Atoi(num2)
+		if err != nil {
+			fmt.Println("Error .. need  only digit")
+			continue
+		}
+		switch operation {
+		case "1":
+			fmt.Println("Result:", val1+val2)
+		case "2":
+			fmt.Println("Result:", val1*val2)
+		case "3":
+			fmt.Println("Result:", val1-val2)
+		case "4":
+			if val2 == 0 {
+				fmt.Println("error..", num1, "is not divisible by 0")
+				continue
+			}
+			fmt.Println("Result:", val1/val2)
+		}
 	}
 }
